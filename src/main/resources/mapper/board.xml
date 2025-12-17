@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.starbucks_react.mapper.BoardMapper">
+
+    <select id="findAll">
+        select * from starbugs_board
+    </select>
+
+    <insert id="insert" parameterType="com.example.starbucks_react.dto.BoardDto">
+        insert into starbugs_board values (default, #{boardTitle}, #{boardContent},#{boardWriter}, 0, now() );
+    </insert>
+
+    <select id="findById" parameterType="int" resultType="com.example.starbucks_react.dto.BoardDto">
+        select * from starbugs_board where board_id = ${boardId};
+    </select>
+
+</mapper>
