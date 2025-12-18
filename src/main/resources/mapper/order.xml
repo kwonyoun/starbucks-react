@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.starbucks_react.mapper.OrderMapper">
+
+    <select id="findNearestStores" resultType="com.example.starbucks_react.dto.StoreDto">
+        SELECT
+            id,
+            store_name AS storeName,
+            y,
+            x,
+            store_type AS storeType,
+            store_addr AS storeAddr,
+
+            (
+            6371 * ACOS(
+                COS(RADIANS(#{lat}))
+                * COS(RADIANS(y))
+                * COS(RADIANS(x) - RADIANS(#{lng}))
+                + SIN(RADIANS(#{lat}))
+                * SIN(RADIANS(y))
+            )
+            ) AS distance
+
+        FROM starbugs_store
+        ORDER BY distance
+        LIMIT 20
+    </select>
+
+
+</mapper>
