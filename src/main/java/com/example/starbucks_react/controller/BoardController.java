@@ -3,6 +3,7 @@ package com.example.starbucks_react.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,17 @@ public class BoardController {
     @PostMapping
     public void write(@RequestBody BoardDto board) {
         boardService.insert(board);
+    }
+
+    @PostMapping("/edit")
+    public void update(@RequestBody BoardDto board) {
+        boardService.update(board);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable int id) {
+        boardService.delete(id);
     }
     
 }
