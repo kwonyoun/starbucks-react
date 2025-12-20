@@ -7,12 +7,26 @@
         select * from starbugs_board
     </select>
 
+    <select id="findById" parameterType="int" resultType="com.example.starbucks_react.dto.BoardDto">
+        select * from starbugs_board where board_id = ${boardId};
+    </select>
+
     <insert id="insert" parameterType="com.example.starbucks_react.dto.BoardDto">
         insert into starbugs_board values (default, #{boardTitle}, #{boardContent},#{boardWriter}, 0, now() );
     </insert>
 
-    <select id="findById" parameterType="int" resultType="com.example.starbucks_react.dto.BoardDto">
-        select * from starbugs_board where board_id = ${boardId};
-    </select>
+    <update id="update" parameterType="com.example.starbucks_react.dto.BoardDto">
+        UPDATE starbugs_board
+        SET board_title = #{boardTitle},
+            board_content = #{boardContent},
+            board_writer = #{boardWriter}
+        WHERE board_id = ${boardId}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM starbugs_board WHERE board_id = ${boardId}
+    </delete>
+
+    
 
 </mapper>
