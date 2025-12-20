@@ -6,7 +6,7 @@ function BoardHeader() {
   return (
     <header style={styles.header}>
       <h2>게시판</h2>
-      <button onClick={() => navigate("/board/write")}>
+      <button onClick={() => navigate("/boards/write")}>
         글쓰기
       </button>
     </header>

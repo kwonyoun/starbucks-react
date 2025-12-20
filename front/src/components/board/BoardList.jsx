@@ -23,7 +23,7 @@ function BoardList() {
     <div>
       <BoardHeader />
       {boards.map(board => (
-        <BoardItem key={board.id} board={board} />
+        <BoardItem key={board.boardId} board={board} />
       ))}
     </div>
   );
