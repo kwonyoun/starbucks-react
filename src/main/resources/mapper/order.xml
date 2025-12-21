@@ -27,5 +27,12 @@
         LIMIT 20
     </select>
 
+    <update id="updateStatus">
+        UPDATE starbugs_store
+        SET status = #{status}
+        WHERE order_id = #{id}
+    </update>
+
+
 
 </mapper>
