@@ -11,5 +11,6 @@ import com.example.starbucks_react.dto.StoreDto;
 public interface OrderMapper {
 
     List<StoreDto> findNearestStores(@Param("lat") double lat, @Param("lng") double lng);
+    void updateStatus(@Param("id") int id, @Param("status") String status);
     
 }
