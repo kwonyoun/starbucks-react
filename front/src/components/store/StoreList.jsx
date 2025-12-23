@@ -3,10 +3,13 @@ import { fetchNearestStores } from "../../api/StoreApi";
 import StoreCard from "./StoreCard";
 import StoreHeader from "./StoreHeader";
 import Loading from "../common/Loading";
+import { useNavigate } from "react-router-dom";
+
 
 function StoreList() {
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -39,8 +42,15 @@ function StoreList() {
     <div>
       <StoreHeader />
       {stores.map(store => (
+        <li
+          key={store.storeId}
+          onClick={() => navigate(`/stores/${store.storeId}`)}
+          style={{ cursor: "pointer" }}
+        >
         <StoreCard key={store.id} store={store} />
+        </li>
       ))}
+      
     </div>
   );
 }

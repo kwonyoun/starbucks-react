@@ -6,10 +6,10 @@ function BoardItem({ board }) {
   return (
     <div
       style={styles.item}
-      onClick={() => navigate(`/board/${board.id}`)}
+      onClick={() => navigate(`/boards/${board.boardId}`)}
     >
-      <strong>{board.title}</strong>
-      <p>{board.writer}</p>
+      <strong>{board.boardTitle}</strong>
+      <p>{board.boardWriter}</p>
     </div>
   );
 }

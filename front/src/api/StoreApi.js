@@ -15,3 +15,9 @@ export const fetchNearestStores = async (lat, lng) => {
   return res.json();
 };
 
+export const fetchStoreById = async (id) => {
+  const res = await fetch(`http://localhost:8080/api/stores/${id}`);
+  return res.json();
+};
+
+

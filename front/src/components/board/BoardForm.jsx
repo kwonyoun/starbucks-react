@@ -1,48 +1,38 @@
-function BoardForm({
-  title,
-  content,
-  writer,
-  onChangeTitle,
-  onChangeContent,
-  onChangeWriter,
-  onSubmit,
-  onCancel,
-}) {
-  return (
-    <div style={styles.form}>
-      <h2>글 작성</h2>
+import { useState } from "react";
 
+function BoardForm({ initialData, onSubmit }) {
+  const [boardTitle, setBoardTitle] = useState(initialData?.boardTitle || "");
+  const [boardContent, setBoardContent] = useState(initialData?.boardContent || "");
+  const [boardWriter, setBoardWriter] = useState(initialData?.boardWriter || "");
+
+  const submit = () => {
+    onSubmit({
+      boardTitle,
+      boardContent,
+      boardWriter
+    });
+  };
+
+  return (
+    <div>
       <input
         placeholder="제목"
-        value={title}
-        onChange={e => onChangeTitle(e.target.value)}
+        value={boardTitle}
+        onChange={e => setBoardTitle(e.target.value)}
       />
-
       <textarea
         placeholder="내용"
-        value={content}
-        onChange={e => onChangeContent(e.target.value)}
+        value={boardContent}
+        onChange={e => setBoardContent(e.target.value)}
       />
-
       <input
         placeholder="작성자"
-        value={writer}
-        onChange={e => onChangeWriter(e.target.value)}
+        value={boardWriter}
+        onChange={e => setBoardWriter(e.target.value)}
       />
-
-      <button onClick={onSubmit}>등록</button>
-      <button onClick={onCancel}>취소</button>
+      <button onClick={submit}>저장</button>
     </div>
   );
 }
-
-const styles = {
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "8px",
-    padding: "16px",
-  },
-};
 
 export default BoardForm;
