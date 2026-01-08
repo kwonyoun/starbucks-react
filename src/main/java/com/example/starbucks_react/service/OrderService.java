@@ -21,6 +21,8 @@ public class OrderService {
 
     public StoreDto getStoreDetail(int id){
         return orderMapper.getStoreDetail(id);
+    public void updateStatus(int id, String status) {
+        orderMapper.updateStatus(id, status);
     }
     
 }
