@@ -27,6 +27,17 @@
         LIMIT 20
     </select>
 
+    <select id="getStoreDetail" resultType="com.example.starbucks_react.dto.StoreDto">
+        SELECT
+            id,
+            store_name AS storeName,
+            y,
+            x,
+            store_type AS storeType,
+            store_addr AS storeAddr
+        FROM starbugs_store
+        WHERE id = ${id}
+    </select>
     <update id="updateStatus">
         UPDATE starbugs_store
         SET status = #{status}

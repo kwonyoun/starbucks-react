@@ -46,5 +46,10 @@ public class OrderController {
         chatController.sendOrderStatus(msg);
     }
 
+    @GetMapping("/{id}")
+    public StoreDto getStoreDetail(@PathVariable int id) {
+        return orderService.getStoreDetail(id);
+    }
+    
     
 }
