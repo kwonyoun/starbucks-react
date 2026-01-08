@@ -18,5 +18,9 @@ public class OrderService {
     public List<StoreDto> getNearestStores(double lat, double lng) {
         return orderMapper.findNearestStores(lat, lng);
     }
+
+    public StoreDto getStoreDetail(int id){
+        return orderMapper.getStoreDetail(id);
+    }
     
 }
